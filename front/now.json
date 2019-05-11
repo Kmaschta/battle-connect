@@ -1,0 +1,22 @@
+{
+    "name": "battle-connect",
+    "version": 2,
+    "alias": ["battle-connect.now.sh"],
+    "builds": [{ "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }],
+    "routes": [
+        { "src": "/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/static/$1" },
+        { "src": "/favicon.ico", "dest": "/favicon.ico" },
+        { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
+        { "src": "/manifest.json", "dest": "/manifest.json" },
+        { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
+        { "src": "/service-worker.js", "headers": { "cache-control": "s-maxage=0" }, "dest": "/service-worker.js" },
+        { "src": "/(.*)", "headers": { "cache-control": "s-maxage=0" }, "dest": "/index.html" }
+    ],
+    "build": {
+        "env": {
+            "REACT_APP_BATTLE_OAUTH_CLIENT_ID": "@battle-connect-client-id",
+            "REACT_APP_BATTLE_OAUTH_REDIRECT_URI": "https://battle-connect.kmaschta.now.sh",
+            "REACT_APP_API_URL": "https://battle-connect-api.kmaschta.now.sh"
+        }
+    }
+}

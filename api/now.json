@@ -1,0 +1,17 @@
+{
+    "name": "battle-connect-api",
+    "version": 2,
+    "alias": ["battle-connect-api.now.sh"],
+    "builds": [
+        {
+            "src": "**/*.js",
+            "use": "@now/node"
+        }
+    ],
+    "routes": [{ "src": ".*", "dest": "/src" }],
+    "env": {
+        "BATTLE_CLIENT_ID": "@battle-connect-client-id",
+        "BATTLE_CLIENT_SECRET": "@battle-connect-client-secret",
+        "BATTLE_CLIENT_REDIRECT_URI": "https://battle-connect.kmaschta.now.sh"
+    }
+}
